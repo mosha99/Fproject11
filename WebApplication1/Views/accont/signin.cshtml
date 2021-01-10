@@ -1,0 +1,67 @@
+﻿@*@model WebApplication1.Models.ModelUser*@
+@model WebApplication1.Models.ModelUser
+
+@{
+    ViewBag.Title = "signin";
+    Layout = "~/Views/sheard/_Layout.cshtml";
+}
+  @section head{
+    <link rel="stylesheet" href="~/css/signin.css">
+}
+
+<div class="d-flex flex-column visible col-5 bg-light" id="d-form">
+    <div id="d-h" class="bg-danger p-1">
+        <h3 class="w-100">ثبت نام</h3>
+    </div>
+    
+    @using (Html.BeginForm("signin", "accont", FormMethod.Post, null)) {
+        <div class="form-group">
+    <label>نام</label>@Html.EditorFor(m => m.ferstname)
+            @if (@Model.ferstname_error != null)
+            {<label class="error-box">@Model.ferstname_error</label>}
+        </div>
+        
+        <div class="form-group">
+    <label>نام خانوادگی</label>@Html.EditorFor(m => m.LastName)
+            @if (@Model.LastName_error != null)
+            {<label class="error-box">@Model.LastName_error</label>}
+        </div>
+        <div class="form-group">
+              <label>نام کاربری</label>@Html.EditorFor(m => m.UserName)
+              @if (@Model.UserName_error != null)
+                {<label class="error-box">@Model.UserName_error</label>}
+              @if (@Model.UserName_Duplicate != null)
+                {<label class="error-box">@Model.UserName_Duplicate</label>}
+        </div>
+    <div class="form-group">
+    <label>ایمیل</label>@Html.EditorFor(m => m.email)
+        @if (@Model.email_error != null)
+            {<label class="error-box">@Model.email_error</label>}
+        @if (@Model.email_Duplicate != null)
+            {<label class="error-box">@Model.email_Duplicate</label>}
+    </div>
+    <div class="form-group">
+        <label>گذرواژه</label>
+        @Html.EditorFor(m => m.password)
+        @if (@Model.password_error != null)
+        {<label class="error-box">@Model.password_error</label>}
+    </div>
+    
+    <button class="btn btn-primary" type="submit">ثبت نام</button>
+    }
+    
+</div>
+@Html.ActionLink("وارد شوید", "login")
+@section sqript{
+    <script>
+        $(document).ready(function () {
+
+            $(".text-box").addClass('form-control');
+            $(".error-box").addClass("t-error")
+            $(".error-box").siblings("input").addClass("error")
+            //xhttp.open("get", "signin", true);
+            //xhttp.send();
+
+        });
+    </script>
+    }

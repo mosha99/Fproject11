@@ -1,0 +1,14 @@
+.container-fluid {
+  background: url("/img/Web1920–1.svg") center / cover space;
+
+}
+
+.vh-100.container-fluid {
+}
+
+* {
+  direction: rtl;
+  text-align: right;
+  /*padding: 0px;*/
+}
+

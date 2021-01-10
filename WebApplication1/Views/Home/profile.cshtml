@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.profile
+
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/sheard/_Layout.cshtml";
+}
+
+}
+@section head{
+    <link rel="stylesheet" href="~/css/signin.css">
+}
+
+<div class="d-flex flex-column visible col-5 bg-light" id="d-form">
+    <div id="d-h" class="bg-danger p-1">
+        <h3 class="w-100">ثبت نام</h3>
+    </div>
+
+    @using (Html.BeginForm("#", "#", FormMethod.Post, null))
+    {
+        <div class="form-group">
+            <label>نام</label>@Html.EditorFor(m => m.ferstname)
+            
+        </div>
+
+        <div class="form-group">
+            <label>نام خانوادگی</label>@Html.EditorFor(m => m.LastName)
+            
+        </div>
+        <div class="form-group">
+            <label>نام کاربری</label>@Html.EditorFor(m => m.UserName)
+            
+        </div>
+        <div class="form-group">
+            <label>ایمیل</label>@Html.EditorFor(m => m.email)
+            
+        </div>
+    
+
+        <button class="btn btn-primary" type="submit">ثبت نام</button>
+    }
+
+</div>
+@Html.ActionLink("بازگشت", "index")
+
+@section sqript{
+    <script>
+        $(document).ready(function () {
+
+            $("input").attr(disabled, false);
+            
+
+        });
+    </script>
+}

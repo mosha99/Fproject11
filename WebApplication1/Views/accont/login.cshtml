@@ -1,0 +1,57 @@
+﻿@model WebApplication1.Models.log
+
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/sheard/_Layout.cshtml";
+}
+@section head{
+    <link rel="stylesheet" href="~/css/signin.css">
+}
+<div class="d-flex flex-column visible col-5 bg-light" id="d-form">
+    <div id="d-h" class="bg-danger p-1">
+        <h3 class="w-100">ورود</h3>
+    </div>
+
+    @using (Html.BeginForm("login", "accont", FormMethod.Post, null))
+    {
+        
+        <div class="form-group">
+            <label>نام کاربری</label>@Html.EditorFor(m => m._UserName)
+            @if (@Model._UserName_error != null)
+                {<label class="error-box">@Model._UserName_error</label>}
+            
+        </div>
+        
+        <div class="form-group">
+            <label>گذرواژه</label>
+            @Html.EditorFor(m => m._password)
+        </div>
+
+        <div class="form-group" style="display:none;">
+            @Html.EditorFor(m => m.url)
+        </div>
+
+        <button class="btn btn-primary" type="submit">ورود</button>
+        if (@Model._password_error != null)
+        {<label class="error-box" style="display:block">@Model._password_error</label>}
+        
+       
+    }
+       
+</div>
+@Html.ActionLink("ایجاد حساب", "signin")
+@Html.ActionLink("فراموشی گذرواژه", "lostpassword")
+
+@section sqript{
+    <script>
+        $(document).ready(function () {
+            $("button").addClass('button');
+            $(".text-box").addClass('form-control');
+            $(".error-box").addClass("t-error")
+            $(".error-box").siblings("input").addClass("error")
+            //xhttp.open("get", "signin", true);
+            //xhttp.send();
+
+        });
+    </script>
+}

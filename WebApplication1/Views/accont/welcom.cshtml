@@ -1,0 +1,12 @@
+﻿ @model WebApplication1.Models.welcom
+@{
+    ViewBag.Title = "welcom";
+    Layout = "~/Views/sheard/_Layout.cshtml";
+}
+
+<h2>خوش آمدید @Model.fullName</h2>
+<br/>
+<h4>@Html.ActionLink("خروج", "SignOut" ,"accont")</h4>
+
+@section head{}
+@section sqript{}
